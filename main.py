@@ -29,13 +29,13 @@ yourpass = str(input("Enter your Gmail Password: "))
 reciever = str(input("Enter the recievers email: "))
 message = str(input("Enter what you would like to send to the reciever: "))
 
+connection = smtplib.SMTP_SSL("smtp.gmail.com", port, context=sslcontext)
+connection.login(youremail, yourpass)
+
 
 while True:
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S")
-
-    connection = smtplib.SMTP_SSL("smtp.gmail.com", port, context=sslcontext)
-    connection.login(youremail, yourpass)
     connection.sendmail(youremail, reciever, message)
 
     print("----------------------------------------")
